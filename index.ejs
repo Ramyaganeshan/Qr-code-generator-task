@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <h1>Personal infromation</h1>
+    <h4>Please fill your details in the below form</h4>
+    <form method="post" action="/submit" id="form">
+      <div>
+        <lable for="name">Name<span>*</span></lable>
+        <input type="text" autocomplete="off" id="name" name="name" />
+        <p id="name_error" class="error"></p>
+
+        <lable for="dateofbirth">Date of Birth<span>*</span></lable>
+        <input
+          type="date"
+          autocomplete="off"
+          id="dateofbirth"
+          name="dateofbirth"
+        />
+        <p id="date_error" class="error"></p>
+
+        <lable for="email">Email<span>*</span></lable>
+        <input type="email" autocomplete="off" id="email" name="email" />
+        <p id="mail_error" class="error"></p>
+
+        <lable for="contactnumber">Contact Number<span>*</span></lable>
+        <input
+          type="text"
+          autocomplete="off"
+          id="number"
+          name="contactnumber"
+        />
+        <p id="number_error" class="error"></p>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <script>
+      const form = document.getElementById("form");
+      form.onsubmit = (event) => {
+        let validForm = true;
+
+        document.getElementById("name_error").innerHTML = "";
+        document.getElementById("date_error").innerHTML = "";
+        document.getElementById("mail_error").innerHTML = "";
+        document.getElementById("number_error").innerHTML = "";
+
+        const Name = document.getElementById("name");
+        if (Name.value == "" || !Name.value) {
+          validForm = false;
+
+          document.getElementById("name_error").innerHTML =
+            "Field should not be empty.";
+        }
+
+        const DateofBirth = document.getElementById("dateofbirth");
+        if (DateofBirth.value == "" || !DateofBirth.value) {
+          validForm = false;
+          document.getElementById("date_error").innerHTML =
+            "Field should not be empty.";
+        }
+
+        const Email = document.getElementById("email");
+        if (Email.value == "" || !Email.value) {
+          validForm = false;
+          document.getElementById("mail_error").innerHTML =
+            "Field should not be empty.";
+        }
+
+        const ContactNumber = document.getElementById("number");
+        if (ContactNumber.value == "" || !ContactNumber.value) {
+          validForm = false;
+          document.getElementById("number_error").innerHTML =
+            "Field should not be empty.";
+        }
+        if (!validForm) {
+          event.preventDefault();
+        }
+      };
+    </script>
+  </body>
+</html>
